@@ -1,0 +1,5 @@
+<script setup lang="ts"></script>
+
+<template>
+  <h1>Sign Up Page</h1>
+</template>
