@@ -217,8 +217,25 @@ import PlanCardComponent from "@/components/PlanCardComponent.vue";
         />
       </div>
     </section>
+    <section class="py-[10rem] px-[7%] w-full flex items-center justify-center">
+      <div
+        class="flex flex-col gap-4 items-center bg-[#65b338] p-8 rounded-3xl shadow-lg transition-all"
+      >
+        <h2 class="text-[3rem] font-bold leading-10">
+          How much can I earn on my rent?
+        </h2>
+        <p class="text-[1.5rem]">
+          Click the button bellow to calculate your rewards.
+        </p>
+        <a
+          href="/rewards"
+          class="px-6 py-3 border border-black rounded-xl bg-black text-white text-[1.3rem] font-medium hover:-translate-y-2 hover:translate-x-1 transition-all"
+          >Calculate Now</a
+        >
+      </div>
+    </section>
     <section
-      class="py-[10rem] px-[7%] w-full flex flex-col gap-14 items-center"
+      class="pb-[10rem] px-[7%] w-full flex flex-col gap-14 items-center"
     >
       <div class="flex flex-col gap-2 items-center">
         <h2 class="text-[3rem] font-bold">Meet Our Saver of the Month</h2>

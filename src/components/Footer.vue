@@ -61,13 +61,12 @@ import IconTwitter from "./icons/IconTwitter.vue";
     </section>
     <section class="w-1/2 max-sm:w-full text-[0.7rem] flex flex-col gap-3">
       <p>
-        Piggyvest (formerly piggybank.ng) is the leading online savings &
-        investing platform in Nigeria. For over 8 years, our customers have
-        saved and invested billions of Naira that they would normally be tempted
-        to spend.
+        IntraCard is the leading online savings & investing platform in
+        Nigeria. For over 8 years, our customers have saved and invested
+        billions of Naira that they would normally be tempted to spend.
       </p>
       <p>
-        PV Capital Limited is a fund manager duly licensed by the Securities and
+        IC Capital Limited is a fund manager duly licensed by the Securities and
         Exchange Commission (SEC) of Nigeria.
       </p>
       <p>
