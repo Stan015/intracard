@@ -50,7 +50,7 @@ const toggleFaq = (index: number) => {
 </script>
 
 <template>
-  <main class="pt-[8rem] pb-[2rem] px-[15%]">
+  <main class="pt-[8rem] pb-[2rem] px-[15%] min-h-screen">
     <h2 class="text-[2rem] max-sm:text-[1.3rem] font-bold mb-6 text-center">
       Frequently Asked Questions
     </h2>
