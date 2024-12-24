@@ -2,7 +2,15 @@
 import IconCentralized from "@/components/icons/IconCentralized.vue";
 import IconNotification from "@/components/icons/IconNotification.vue";
 import IconOffer from "@/components/icons/IconOffer.vue";
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
+
+// Define the structure of reward details
+type CardId = "1" | "2" | "3";
+interface RewardDetail {
+  ppd: number;
+  threshold: number;
+  multiple: number;
+}
 
 // Track the active view (0 = Best Cashback, 1 = Best Points)
 const activeView = ref(0);
@@ -11,6 +19,73 @@ const activeView = ref(0);
 const switchView = (view: number) => {
   activeView.value = view;
 };
+
+// Reactive properties
+const rentAmount = ref<number>(499);
+const selectedCard = ref<CardId>("1");
+const annualRewards = ref<number>(0);
+
+// Reward details for each card
+const rewardDetails: Record<CardId, RewardDetail> = {
+  "1": { ppd: 0.02, threshold: 5000, multiple: 1.5 },
+  "2": { ppd: 0.03, threshold: 7000, multiple: 2.0 },
+  "3": { ppd: 0.015, threshold: 4000, multiple: 1.2 },
+};
+
+// Calculate annual rewards for a given card
+const calculateAnnualRewards = (
+  ppd: number,
+  threshold: number,
+  multiple: number
+) => {
+  const rentPerYear = rentAmount.value * 12;
+  return (
+    Math.min(rentPerYear, threshold) * ppd * multiple +
+    Math.max(rentPerYear - threshold, 0) * ppd
+  );
+};
+
+// Computed property to find the best cashback card
+const bestCashback = computed(() => {
+  let maxRewards = 0;
+  let bestCard: CardId = "1";
+
+  for (const [cardId, { ppd, threshold, multiple }] of Object.entries(
+    rewardDetails
+  ) as [CardId, RewardDetail][]) {
+    const rewards = calculateAnnualRewards(ppd, threshold, multiple);
+    if (rewards > maxRewards) {
+      maxRewards = rewards;
+      bestCard = cardId;
+    }
+  }
+
+  return { cardId: bestCard, rewards: maxRewards };
+});
+
+// Computed property to find the best points card
+const bestPointsCard = computed(() => {
+  let maxPoints = 0;
+  let bestCard: CardId = "1";
+
+  for (const [cardId, { ppd }] of Object.entries(
+    rewardDetails
+  ) as [CardId, RewardDetail][]) {
+    const points = ppd * 12 * rentAmount.value;
+    if (points > maxPoints) {
+      maxPoints = points;
+      bestCard = cardId;
+    }
+  }
+
+  return { cardId: bestCard, points: maxPoints };
+});
+
+// Update annual rewards for the selected card
+watch([rentAmount, selectedCard], () => {
+  const { ppd, threshold, multiple } = rewardDetails[selectedCard.value];
+  annualRewards.value = calculateAnnualRewards(ppd, threshold, multiple);
+}, { immediate: true });
 </script>
 
 <template>
@@ -20,7 +95,7 @@ const switchView = (view: number) => {
     >
       <div class="w-[24rem] flex flex-col gap-6">
         <h1 class="text-[2.7rem] font-bold leading-[2.6rem]">
-          Unlock Great Rewards with Your Credit Cards
+          Unlock Great Rewards With Your Credit Cards
         </h1>
         <p class="text-[1.3rem] text-gray-800">
           Maximize the benefits of your spending by earning cashback and reward
@@ -64,6 +139,7 @@ const switchView = (view: number) => {
               <input
                 type="number"
                 class="border border-gray-300 hover:border-[#3e8e19] focus:border-[#3e8e19] transition-all focus:outline-[#3e8e19] bg-transparent rounded-lg px-4 py-2 w-full pl-[3.5rem] z-10"
+                v-model="rentAmount"
                 placeholder="Rent Amount"
                 value="499"
               />
@@ -82,6 +158,7 @@ const switchView = (view: number) => {
           <label class="flex flex-col gap-2 w-full text-[1.2rem] font-bold">
             Selected Card
             <select
+              v-model="selectedCard"
               class="border border-gray-300 hover:border-[#3e8e19] focus:border-[#3e8e19] transition-all focus:outline-[#3e8e19] bg-transparent rounded-lg px-4 py-2 w-full text-[1rem]"
             >
               <option value="1">Chase Sapphire</option>
@@ -95,14 +172,14 @@ const switchView = (view: number) => {
             <div
               class="flex gap-1 flex-col items-center border-b border-b-gray-200 w-full pb-4"
             >
-              <p class="text-[2rem] font-bold">$473</p>
+              <p class="text-[2rem] font-bold">${{ annualRewards }}</p>
               <p class="text-base text-gray-200">
                 /Annual Rewards (Excluding Fees)
               </p>
             </div>
             <div class="flex w-full items-center justify-between">
               <p class="text-base">Value per rent dollar</p>
-              <p class="text-base">$0.02</p>
+              <p class="text-base">${{ rewardDetails[selectedCard].ppd.toFixed(2) }}</p>
             </div>
           </div>
           <div class="w-full">
@@ -148,7 +225,7 @@ const switchView = (view: number) => {
                     <div
                       class="flex gap-1 flex-col items-center border-b border-b-gray-200 w-full pb-4"
                     >
-                      <p class="text-[2rem] font-bold">$473</p>
+                      <p class="text-[2rem] font-bold">${{ bestCashback.rewards.toFixed(2) }}</p>
                       <p class="text-base text-gray-200">
                         /Annual Rewards (Excluding Fees)
                       </p>
@@ -157,7 +234,7 @@ const switchView = (view: number) => {
                       class="flex w-full items-center justify-between text-base text-white"
                     >
                       <p>Value per rent dollar</p>
-                      <p>$0.02</p>
+                      ${{ rewardDetails[bestCashback.cardId]?.ppd.toFixed(2) }}
                     </div>
                   </div>
                 </div>
@@ -170,7 +247,7 @@ const switchView = (view: number) => {
                     <div
                       class="flex gap-1 flex-col items-center border-b border-b-gray-200 w-full pb-4"
                     >
-                      <p class="text-[2rem] font-bold">$473</p>
+                      <p class="text-[2rem] font-bold">${{ bestPointsCard.points.toFixed(2) }}</p>
                       <p class="text-base text-gray-200">
                         /Annual Rewards (Excluding Fees)
                       </p>
@@ -179,7 +256,7 @@ const switchView = (view: number) => {
                       class="flex w-full items-center justify-between text-base text-white"
                     >
                       <p>Value per rent dollar</p>
-                      <p>$0.02</p>
+                      ${{ rewardDetails[bestPointsCard.cardId]?.ppd.toFixed(2) }}
                     </div>
                   </div>
                 </div>
