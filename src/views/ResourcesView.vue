@@ -63,7 +63,7 @@ const setCategory = (category: string) => {
 </script>
 
 <template>
-  <main class="pt-[8rem] pb-[2rem] px-[15%] min-h-screen">
+  <main class="pt-[8rem] pb-[2rem] px-[5%] xl:px-[15%] min-h-screen">
     <h1 class="text-3xl font-bold text-center mb-6">Resources</h1>
     <p class="text-gray-600 text-center mb-8">
       Explore our guides, articles, and tools to help you make informed
@@ -71,7 +71,7 @@ const setCategory = (category: string) => {
     </p>
 
     <!-- Categories -->
-    <div class="flex justify-center mb-6 space-x-4">
+    <div class="flex justify-center mb-6 flex-wrap gap-4">
       <button
         v-for="category in categories"
         :key="category"
