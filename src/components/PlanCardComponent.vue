@@ -45,7 +45,7 @@ const props = defineProps({
     <div class="z-[1]">
       <h3
         :class="[
-          'text-[2rem] font-bold transition-all group-hover:text-white',
+          'text-[2rem] max-md:text-[1.6rem] font-bold transition-all group-hover:text-white',
           teamColor,
         ]"
       >
@@ -57,7 +57,7 @@ const props = defineProps({
     </div>
     <div :class="['flex items-center gap-2', teamColor]">
       <IconEnterArrow class="transform -scale-x-100 group-hover:text-white" />
-      <div class="sticky group">
+      <div class="sticky group z-10">
         <a
           :href="href"
           class="text-base py-1 font-semibold group-hover:text-white"
@@ -73,7 +73,7 @@ const props = defineProps({
     <img
       :src="imgSrc"
       alt="card img"
-      class="absolute bottom-0 right-5 w-[15rem] h-[15rem] translate-y-[100%] translate-x-[100%] group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300"
+      class="absolute bottom-0 right-5 w-[15rem] h-[15rem] max-sm:w-[11rem] max-sm:h-[11rem] translate-y-[100%] translate-x-[100%] group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300"
     />
   </a>
 </template>

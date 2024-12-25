@@ -7,13 +7,15 @@ import IconTwitter from "./icons/IconTwitter.vue";
 
 <template>
   <footer
-    class="flex flex-col py-8 px-[15%] gap-10 text-[0.9rem] text-gray-600 mb-[2rem]"
+    class="flex flex-col py-8 px-[5%] xl:px-[15%] gap-10 text-[0.9rem] text-gray-600 mb-[2rem]"
   >
     <section
       class="flex justify-between max-md:justify-center gap-6 w-full border-b py-7 flex-wrap"
     >
       <img src="/Intracard-logo.svg" alt="logo" class="w-[15rem]" />
-      <div class="flex gap-5 w-[50%] flex-wrap justify-between mr-3">
+      <div
+        class="flex gap-5 w-[50%] max-md:w-full flex-wrap justify-between mr-3"
+      >
         <div>
           <h3>Products</h3>
           <ul>
@@ -53,21 +55,21 @@ import IconTwitter from "./icons/IconTwitter.vue";
           <a href="#"><IconLinkedIn /></a>
         </div>
         <div aria-label="quick contacts" class="flex flex-col gap-2">
-          <a href="">No. 3 address to go here</a>
+          <a href=""> 271 st. Moritz Terrace SW, T3H 5X8</a>
           <a href="mailto:contact@intracard.com">contact@intracard.com</a>
-          <a href="tel:+234 123 456 7890">+234 123 456 7890</a>
+          <a href="tel:+234 123 456 7890">(555) 456 7890</a>
         </div>
       </div>
     </section>
     <section class="w-1/2 max-sm:w-full text-[0.7rem] flex flex-col gap-3">
       <p>
-        IntraCard is the leading online savings & investing platform in
-        Nigeria. For over 8 years, our customers have saved and invested
-        billions of Naira that they would normally be tempted to spend.
+        IntraCard is the leading online savings & investing platform in Nigeria.
+        For over 8 years, our customers have saved and invested billions of
+        Naira that they would normally be tempted to spend.
       </p>
       <p>
-        IC Capital Limited is a fund manager duly licensed by the Securities and
-        Exchange Commission (SEC) of Nigeria.
+        IntraCard Technologies Inc is a fund manager duly licensed by the
+        Securities and Exchange Commission (SEC) of Nigeria.
       </p>
       <p>
         &copy; {{ new Date().getFullYear() }} IntraCard. All rights reserved.

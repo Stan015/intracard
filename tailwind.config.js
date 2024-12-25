@@ -7,8 +7,8 @@ export default {
         sans: ["Poppins", "sans-serif"],
       },
       backgroundColor: {
-        action: "#6958b5",
-        actionhover: "#a68ce3",
+        action: "#6c3baa",
+        actionhover: "#6958b5",
       }
     },
   },
