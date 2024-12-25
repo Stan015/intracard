@@ -91,23 +91,23 @@ watch([rentAmount, selectedCard], () => {
 <template>
   <main class="pt-[8rem] pb-[2rem]">
     <section
-      class="flex gap-4 px-[15%] items-center min-h-[70dvh] flex-wrap justify-center lg:justify-between"
+      class="flex gap-4 px-[5%] xl:px-[15%] items-center min-h-[70dvh] flex-wrap justify-center lg:justify-between max-lg:mt-[3rem]"
     >
-      <div class="w-[24rem] flex flex-col gap-6">
-        <h1 class="text-[2.7rem] font-bold leading-[2.6rem]">
+      <div class="w-[24rem] flex flex-col gap-6 max-lg:w-[80%] max-lg:items-center max-lg:text-center max-lg:text-balance max-sm:w-full">
+        <h1 class="text-[2.7rem] max-md:text-[2rem] max-md:text-center font-bold leading-[2.6rem]">
           Unlock Great Rewards With Your Credit Cards
         </h1>
-        <p class="text-[1.3rem] text-gray-800">
+        <p class="text-[1.3rem]  max-md:text-center max-md:text-[1.2rem] text-gray-800">
           Maximize the benefits of your spending by earning cashback and reward
           points every time you use your credit card through our platform.
         </p>
         <a
           href=""
-          class="px-6 py-3 border border-black rounded-xl bg-black text-white text-[1.3rem] font-medium hover:-translate-y-2 hover:translate-x-1 transition-all w-max"
+          class="px-6 py-3 border border-black rounded-xl bg-black text-white text-[1.3rem]  max-sm:text-base max-sm:text-nowrap font-medium hover:-translate-y-2 hover:translate-x-1 transition-all w-max"
           >Get Started</a
         >
       </div>
-      <div class="h-[34rem] w-[32rem] relative p-4">
+      <div class="h-[34rem] w-[32rem] max-md:w-[25rem] max-md:h-[28rem] max-sm:w-[20rem] relative p-4">
         <img
           aria-hidden="true"
           src="/skyscr.avif"
@@ -116,10 +116,10 @@ watch([rentAmount, selectedCard], () => {
         />
       </div>
     </section>
-    <section class="flex flex-col w-full items-center px-[15%]">
+    <section class="flex flex-col w-full items-center px-[5%] xl:px-[15%]">
       <div class="flex flex-col gap-2 items-center">
-        <h2 class="text-[3rem] font-bold">Find out how much you can earn.</h2>
-        <p class="text-[1.5rem]">
+        <h2 class="text-[3rem] max-md:text-[2rem] max-md:text-center font-bold">Find out how much you can earn.</h2>
+        <p class="text-[1.5rem]  max-md:text-center max-md:text-[1.2rem]">
           Enter your rent amount and card of choice to reveal your rewards!
         </p>
       </div>
@@ -173,7 +173,7 @@ watch([rentAmount, selectedCard], () => {
               class="flex gap-1 flex-col items-center border-b border-b-gray-200 w-full pb-4"
             >
               <p class="text-[2rem] font-bold">${{ annualRewards }}</p>
-              <p class="text-base text-gray-200">
+              <p class="text-base text-gray-200 max-sm:text-[0.8rem]">
                 /Annual Rewards (Excluding Fees)
               </p>
             </div>
@@ -216,7 +216,7 @@ watch([rentAmount, selectedCard], () => {
                 :style="{ transform: `translateX(-${activeView * 101}%)` }"
               >
                 <div class="min-w-full flex flex-col rounded-lg">
-                  <h4 class="text-2xl font-bold mb-4">
+                  <h4 class="text-2xl max-sm:text-[1.1rem] font-bold mb-4">
                     Momentum Visa Infinite
                   </h4>
                   <div
@@ -226,7 +226,7 @@ watch([rentAmount, selectedCard], () => {
                       class="flex gap-1 flex-col items-center border-b border-b-gray-200 w-full pb-4"
                     >
                       <p class="text-[2rem] font-bold">${{ bestCashback.rewards.toFixed(2) }}</p>
-                      <p class="text-base text-gray-200">
+                      <p class="text-base text-gray-200 max-sm:text-[0.8rem]">
                         /Annual Rewards (Excluding Fees)
                       </p>
                     </div>
@@ -240,7 +240,7 @@ watch([rentAmount, selectedCard], () => {
                 </div>
 
                 <div class="min-w-full flex flex-col rounded-lg">
-                  <h4 class="text-2xl font-bold mb-4">Aeroplan Reserve</h4>
+                  <h4 class="text-2xl max-sm:text-[1.1rem] font-bold mb-4">Aeroplan Reserve</h4>
                   <div
                     class="flex gap-4 flex-col w-full items-center rounded-2xl bg-[#3e8e19] text-white p-4"
                   >
@@ -248,7 +248,7 @@ watch([rentAmount, selectedCard], () => {
                       class="flex gap-1 flex-col items-center border-b border-b-gray-200 w-full pb-4"
                     >
                       <p class="text-[2rem] font-bold">${{ bestPointsCard.points.toFixed(2) }}</p>
-                      <p class="text-base text-gray-200">
+                      <p class="text-base text-gray-200 max-sm:text-[0.8rem]">
                         /Annual Rewards (Excluding Fees)
                       </p>
                     </div>
@@ -263,27 +263,27 @@ watch([rentAmount, selectedCard], () => {
               </div>
             </div>
           </div>
-          <p class="w-full text-base text-center mb-4 text-gray-600">
+          <p class="w-full text-base text-center mb-4 text-gray-600 text-balance">
             min(rent amount * 12, rewards threshold) * ppd * multiple + max(rent
             amount * 12 - threshold, 0) * ppd
           </p>
         </div>
         <button
-          class="px-6 py-3 border border-black rounded-xl bg-black text-white text-[1.3rem] font-medium hover:-translate-y-2 hover:translate-x-1 transition-all w-max"
+          class="px-6 py-3 border border-black rounded-xl bg-black text-white text-[1.3rem] font-medium hover:-translate-y-2 hover:translate-x-1 transition-all w-max  max-sm:text-base max-sm:text-nowrap"
         >
           Start Earning
         </button>
       </div>
     </section>
-    <section class="flex flex-col w-full items-center mt-[4rem] px-[15%] bg-white py-[5rem]">
+    <section class="flex flex-col w-full items-center mt-[4rem] px-[5%] xl:px-[15%] bg-white py-[5rem]">
       <div class="flex flex-col gap-1 items-center">
-        <h2 class="text-[3rem] font-bold">How it works?</h2>
-        <p class="text-[1.5rem] text-gray-600">
+        <h2 class="text-[3rem] max-md:text-[2rem] max-md:text-center font-bold">How it works?</h2>
+        <p class="text-[1.5rem]  max-md:text-center max-md:text-[1.2rem] text-gray-600">
           Here's how you can unlock great rewards with your credit card!
         </p>
       </div>
-      <div class="flex gap-6 items-center w-full mt-8">
-        <div class="flex gap-6 items-center">
+      <div class="flex gap-6 items-center w-full mt-8 max-lg:flex-col">
+        <div class="flex gap-6 items-center max-md:flex-col max-md:text-center max-md:text-balance">
           <img src="/cashback.webp" alt="a lady holding an intracard" class="w-[12rem] h-[12rem] rounded-3xl"></img>
           <div class="flex flex-col gap-2  max-w-[25rem] text-pretty">
             <h3 class="text-xl font-semibold text-[#3e8e19]">
@@ -305,7 +305,7 @@ watch([rentAmount, selectedCard], () => {
             </ol>
           </div>
         </div>
-        <div class="flex gap-6 items-center">
+        <div class="flex gap-6 items-center max-md:flex-col max-md:text-center max-md:text-balance">
           <img src="/rewards.jpg" alt="a lady holding an intracard" class="w-[12rem] h-[12rem] rounded-3xl"></img>
           <div class="flex flex-col gap-2  max-w-[25rem] text-pretty">
             <h3 class="text-xl font-semibold text-[#3e8e19]">
@@ -330,35 +330,35 @@ watch([rentAmount, selectedCard], () => {
         </div>
       </div>
     </section>
-    <section class="flex flex-col w-full items-center mt-[4rem] px-[15%] border-b border-b-gray-200 pb-[5rem]">
-      <h2 class="text-[3rem] font-bold">Why Choose Our Platform?</h2>
+    <section class="flex flex-col w-full items-center mt-[4rem] px-[5%] xl:px-[15%] border-b border-b-gray-200 pb-[5rem]">
+      <h2 class="text-[3rem] max-md:text-[2rem] max-md:text-center font-bold">Why Choose Our Platform?</h2>
       <div class="flex flex-col gap-6 items-center mt-3">
-        <ul class="flex gap-6 mt-6">
+        <ul class="flex gap-6 mt-6 text-[1.2rem] max-sm:text-base max-sm:flex-wrap">
           <li class="flex flex-col text-center text-balance gap-4 items-center">
             <IconCentralized class="w-[4rem] h-[4rem]" />
-            <p class="text-[1.2rem] text-gray-600">
+            <p class=" text-gray-600">
               <span class="font-bold text-black">Centralized Management:</span> Track your rewards and spending effortlessly in one place.
             </p>
           </li>
           <li class="flex flex-col text-center text-balance gap-4 items-center">
             <IconOffer class="w-[4rem] h-[4rem]" />
-            <p class="text-[1.2rem] text-gray-600">
+            <p class=" text-gray-600">
               <span class="font-bold text-black">Exclusive Offers:</span> Access special deals and promotions for even more points and cashback opportunities.
             </p>
           </li>
           <li class="flex flex-col text-center text-balance gap-4 items-center">
             <IconNotification class="w-[4rem] h-[4rem]" />
-            <p class="text-[1.2rem] text-gray-600">
+            <p class=" text-gray-600">
               <span class="font-bold text-black">Smart Notifications:</span> Get reminders about expiring points or bonus-earning opportunities.
             </p>
           </li>
         </ul>
-        <p class="text-[1.2rem] text-[#3e8e19] w-[80%] text-center mt-3"><span class="font-bold text-[#3e8e19]">Start earning while you spend!</span> With our platform, every transaction brings you closer to
+        <p class="text-[1.2rem] max-sm:text-base text-[#3e8e19] w-[80%] text-center mt-3"><span class="font-bold text-[#3e8e19]">Start earning while you spend!</span> With our platform, every transaction brings you closer to
           exciting rewards, helping you get more out of every purchase.
         </p>
         <a
           href=""
-          class="px-6 py-3 border border-black rounded-xl bg-black text-white text-[1.3rem] font-medium hover:-translate-y-2 hover:translate-x-1 transition-all"
+          class="px-6 py-3 border border-black rounded-xl bg-black text-white text-[1.3rem]  max-sm:text-base max-sm:text-nowrap font-medium hover:-translate-y-2 hover:translate-x-1 transition-all"
           >Get Started</a
         >
       </div>
