@@ -50,7 +50,7 @@ const toggleFaq = (index: number) => {
 </script>
 
 <template>
-  <main class="pt-[8rem] pb-[2rem] px-[15%] min-h-screen">
+  <main class="pt-[8rem] pb-[2rem] px-[5%] xl:px-[15%] min-h-screen">
     <h2 class="text-[2rem] max-sm:text-[1.3rem] font-bold mb-6 text-center">
       Frequently Asked Questions
     </h2>
@@ -64,7 +64,7 @@ const toggleFaq = (index: number) => {
           class="border rounded-lg shadow-sm overflow-hidden"
         >
           <button
-            class="w-full text-left p-4 flex justify-between items-center font-semibold text-white"
+            class="w-full text-left p-4 flex justify-between items-center font-semibold text-white max-sm:text-sm"
             @click="toggleFaq(index)"
           >
             <span>{{ faq.question }}</span>
@@ -84,12 +84,12 @@ const toggleFaq = (index: number) => {
               />
             </svg>
           </button>
-          <div
+          <p
             v-if="activeIndex === index"
-            class="p-4 border-t text-black bg-gray-50"
+            class="p-4 border-t text-black bg-gray-50 max-sm:text-sm"
           >
             {{ faq.answer }}
-          </div>
+          </p>
         </li>
       </ul>
     </div>
